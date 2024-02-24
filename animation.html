@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rotating Icon</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #icon {
+            width: 100px;
+            height: 100px;
+            background-color: #ccc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 1s;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="icon">Icon</div>
+
+    <script>
+        let isRotating = false;
+        let rotationInterval;
+        let rotationAngle = 0;
+
+        document.getElementById('icon').addEventListener('click', function () {
+            
+            if (!isRotating) {
+                rotationInterval = setInterval(() => {
+                    rotationAngle += 180;
+                    document.getElementById('icon').style.transform = 'rotate(' + rotationAngle + 'deg)';
+                }, 1000);
+                isRotating = true;
+            } else {
+                clearInterval(rotationInterval);
+                isRotating = false;
+
+
+            }
+        });
+    </script>
+
+</body>
+
+</html>
